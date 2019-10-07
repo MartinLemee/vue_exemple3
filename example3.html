@@ -178,7 +178,7 @@ var demo = new Vue({
         ]
     },
     methods: {
-    	toggleActive: function(s){
+    	/*toggleActive: function(s){
         if(s.quantity < 1) {
           s.active = !s.active;
           s.quantity++;
@@ -187,13 +187,17 @@ var demo = new Vue({
           s.quantity-=1;
         }
 
-    	},
+    	},*/
     	total: function(){
 
         	var total = 0;
 
         	this.services.forEach(function(s){
-            
+            if(s.quantity >= 1) {
+              s.active = true;
+            } else if (s.quantity == 0) {
+              s.active = false;
+            }
         		if (s.active){
         			total+= (s.price)*s.quantity;
         		}
